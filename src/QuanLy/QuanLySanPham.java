@@ -72,16 +72,22 @@ public class QuanLySanPham {
     public void timKiemMaKhuyenMaiTheoChiDinh() {
         System.out.print("Nhap Loai khuyen mai can tim: ");
         String key_KM = CauHinh.sc.nextLine();
-
+        boolean bienCo=false;
         String temp3[] = new String[1];
         for (SanPham h : this.ds) {
+        	if(h.getKm()!=null) {
             if (h.getKm().maKM.indexOf(key_KM) >= 0) {
                 temp3[0] = h.getKm().maKM;
+                bienCo=true;
                 System.out.println("===San pham tim duoc=== ");
                 h.xuatSanPham();
             }
+        	}else {
+        		continue;
+        	}
+        	
         }
-        if (temp3[0] == null) {
+        if (bienCo==false) {
             System.out.println("!!!Không tim duoc!!! ");
         }
     }
